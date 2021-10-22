@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions
+  PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3.0.dtd">
+
+<tiles-definitions>
+	<definition name="tilesLayout" template="/WEB-INF/views/tiles/TilesLayout.jsp">
+		<put-attribute name="siteTop" value="/WEB-INF/views/tiles/SiteTop.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="siteBottom" value="/WEB-INF/views/tiles/SiteBottom.jsp" />
+	</definition>
+	
+	<definition name="*.tiles" extends="tilesLayout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	
+	<definition name="*/*.tiles" extends="tilesLayout">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="normalLayout" template="/WEB-INF/views/tiles/NormalLayout.jsp">
+		<put-attribute name="NormalLayout" value="" />
+	</definition>
+	
+	<definition name="*.jsp" extends="normalForm">
+		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+	
+	<definition name="*/*.jsp" extends="normalForm">
+		<put-attribute name="NormalLayout" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+</tiles-definitions>
